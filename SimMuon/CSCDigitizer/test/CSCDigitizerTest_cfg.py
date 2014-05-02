@@ -1,6 +1,6 @@
-
 # Test of CSCDigitizer
-# Updated for 700pre3 - Tim Cox - 12.09.2013
+# Futile attempt to update old stand-alone CSCDigitizer test for 700pre11 - Tim Cox - 23.01.2014
+# Config for PostLS1
 
 import FWCore.ParameterSet.Config as cms
 
@@ -15,9 +15,8 @@ process.load("Geometry.MuonNumbering.muonNumberingInitialization_cfi")
 
 process.load("Configuration.StandardSequences.FrontierConditions_GlobalTag_cff")
 
-## process.GlobalTag.globaltag = "MC_38Y_V9::All"
-## Non-standard, non-MC, tag because 700pre3 is under development
-process.GlobalTag.globaltag = "PRE_62_V8::All"
+## Global tag for 700 MC
+process.GlobalTag.globaltag = "MC_70_V3"
 
 process.load("Validation.MuonCSCDigis.cscDigiValidation_cfi")
 
@@ -27,7 +26,7 @@ process.load("CalibMuon.CSCCalibration.CSCIndexer_cfi")
 
 process.source = cms.Source("PoolSource",
     fileNames = cms.untracked.vstring(
-      '/store/relval/CMSSW_7_0_0_pre3/RelValSingleMuPt100/GEN-SIM-DIGI-RAW-HLTDEBUG/PRE_ST62_V8-v1/00000/5E813E19-8414-E311-A5CB-0025905964B4.root'
+      '/store/relval/CMSSW_7_0_0_pre11/RelValSingleMuPt100_UP15/GEN-SIM-DIGI-RAW-HLTDEBUG/POSTLS162_V4-v1/00000/E4168381-9C6A-E311-B8C4-0030486790B8.root'
 )
 )
 

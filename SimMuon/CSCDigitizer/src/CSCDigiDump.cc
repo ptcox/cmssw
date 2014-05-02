@@ -22,28 +22,35 @@ void CSCDigiDump::analyze(edm::Event const& e, edm::EventSetup const& c) {
 
   e.getByToken(wd_token, wires);
 
+  int nwd = 0;
   for (CSCWireDigiCollection::DigiRangeIterator j=wires->begin(); j!=wires->end(); j++) {
     std::cout << "Wire digis from "<< CSCDetId((*j).first) << std::endl;
     std::vector<CSCWireDigi>::const_iterator digiItr = (*j).second.first;
     std::vector<CSCWireDigi>::const_iterator last = (*j).second.second;
     for( ; digiItr != last; ++digiItr) {
-       digiItr->print();
+      ++nwd;
+      digiItr->print();
     }
   }
+  std::cout << "Event " << e.id() << ": no. of wire digis = "  << nwd << std::endl;
 
   e.getByToken(sd_token, strips);
 
+  int nsd = 0;
   for (CSCStripDigiCollection::DigiRangeIterator j=strips->begin(); j!=strips->end(); j++) {
     std::cout << "Strip digis from "<< CSCDetId((*j).first) << std::endl;
     std::vector<CSCStripDigi>::const_iterator digiItr = (*j).second.first;
     std::vector<CSCStripDigi>::const_iterator last = (*j).second.second;
     for( ; digiItr != last; ++digiItr) {
-       digiItr->print();
+      ++ nsd;
+      digiItr->print();
     }
   }
+  std::cout << "Event " << e.id() << ": no. of strip digis = "  << nsd << std::endl;
 
   e.getByToken(cd_token, comparators);
 
+  int ncd = 0;
   for (CSCComparatorDigiCollection::DigiRangeIterator j=comparators->begin(); 
        j!=comparators->end(); j++) 
   {
@@ -51,9 +58,11 @@ void CSCDigiDump::analyze(edm::Event const& e, edm::EventSetup const& c) {
     std::vector<CSCComparatorDigi>::const_iterator digiItr = (*j).second.first;
     std::vector<CSCComparatorDigi>::const_iterator last = (*j).second.second;
     for( ; digiItr != last; ++digiItr) {
-       digiItr->print();
+      ++ncd;
+      digiItr->print();
     }
   }
+  std::cout << "Event " << e.id() << ": no. of comparator digis = "  << nwd << std::endl;
 }
 
 

@@ -12,6 +12,8 @@ from SimMuon.DTDigitizer.muondtdigi_cfi import *
 # RPC digitizer
 # 
 from SimMuon.RPCDigitizer.muonrpcdigi_cfi import *
-muonDigi = cms.Sequence(simMuonCSCDigis+simMuonDTDigis+simMuonRPCDigis)
+## REMOVE CSC NOW IT'S MIXINGMODULE CAPABLE
+##muonDigi = cms.Sequence(simMuonCSCDigis+simMuonDTDigis+simMuonRPCDigis)
+muonDigi = cms.Sequence(simMuonDTDigis+simMuonRPCDigis)
 
 

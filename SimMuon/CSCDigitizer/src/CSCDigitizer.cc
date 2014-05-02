@@ -42,20 +42,14 @@ CSCDigitizer::~CSCDigitizer() {
 
 
 
-void CSCDigitizer::doAction(MixCollection<PSimHit> & simHits, 
+void CSCDigitizer::digitize(std::map<int, edm::PSimHitContainer>& hitMap,
                             CSCWireDigiCollection & wireDigis, 
                             CSCStripDigiCollection & stripDigis, 
                             CSCComparatorDigiCollection & comparators,
                             DigiSimLinks & wireDigiSimLinks,
                             DigiSimLinks & stripDigiSimLinks) 
 {
-  // arrange the hits by layer
-  std::map<int, edm::PSimHitContainer> hitMap;
-  for(MixCollection<PSimHit>::MixItr hitItr = simHits.begin();
-      hitItr != simHits.end(); ++hitItr) 
-  {
-    hitMap[hitItr->detUnitId()].push_back(*hitItr);
-  }
+  // Hits have already been arranged by layer in hitMap during CSCDigiProducer::accumulateSimHits
 
   // count how many layers on each chamber are hit
   std::map<int, std::set<int> > layersInChamberHit;

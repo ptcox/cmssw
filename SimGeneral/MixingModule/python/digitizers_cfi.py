@@ -8,6 +8,7 @@ from SimGeneral.MixingModule.ecalDigitizer_cfi import *
 from SimGeneral.MixingModule.hcalDigitizer_cfi import *
 from SimGeneral.MixingModule.castorDigitizer_cfi import *
 from SimGeneral.MixingModule.trackingTruthProducer_cfi import *
+from SimMuon.CSCDigitizer.muonCSCDigis_cfi import *
 
 theDigitizers = cms.PSet(
   pixel = cms.PSet(
@@ -24,6 +25,9 @@ theDigitizers = cms.PSet(
   ),
   castor  = cms.PSet(
     castorDigitizer
+  ),
+  csc = cms.PSet(
+    cscDigitizer
   )
 )
 
@@ -42,6 +46,9 @@ theDigitizersValid = cms.PSet(
   ),
   castor  = cms.PSet(
     castorDigitizer
+  ),
+  csc = cms.PSet(
+    cscDigitizer
   ),
   mergedtruth = cms.PSet(
     trackingParticles

@@ -149,7 +149,7 @@ void CSCWireElectronicsSim::fillDigis(CSCWireDigiCollection & digis) {
     if(timeWord != 0)
     {
       CSCWireDigi newDigi(wireGroup, timeWord);
-      LogTrace("CSCWireElectronicsSim") << newDigi;
+      LogTrace("CSCWireElectronicsSim|CSCDumpNewDigi") << "CSC wire digi for " << theLayer->id() << " created\n" << newDigi;
       digis.insertDigi(layerId(), newDigi);
       addLinks(channelIndex(wireGroup));
     }

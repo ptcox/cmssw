@@ -15,6 +15,7 @@
 <use   name="SimDataFormats/GeneratorProducts"/>
 <use   name="SimDataFormats/TrackingHit"/>
 <use   name="SimGeneral/HepPDTRecord"/>
+<use   name="SimGeneral/MixingModule"/>
 <use   name="SimMuon/Neutron"/>
 <use   name="Utilities/General"/>
 <use   name="boost"/>

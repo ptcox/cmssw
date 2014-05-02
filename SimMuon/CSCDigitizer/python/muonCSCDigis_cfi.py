@@ -1,6 +1,17 @@
 import FWCore.ParameterSet.Config as cms
 
-simMuonCSCDigis = cms.EDProducer("CSCDigiProducer",
+cscDigitizer = cms.PSet(
+    accumulatorType = cms.string("CSCDigiProducer"),
+
+    InputHits = cms.string("g4SimHits"),
+    InputHitsInstance = cms.string("MuonCSCHits"),
+
+    stripConditions = cms.string('Database'),
+    GeometryType = cms.string('idealForDigi'),
+
+    digitizeBadChambers = cms.bool(False),
+    layersNeeded = cms.uint32(3),
+
     strips = cms.PSet(
         peakTimeSigma = cms.double(3.0),
         timeBitForBxZero = cms.int32(6),
@@ -42,16 +53,7 @@ simMuonCSCDigis = cms.EDProducer("CSCDigiProducer",
         ampGainSigma = cms.double(0.03),
         doCorrelatedNoise = cms.bool(True)
     ),
-    doNeutrons = cms.bool(False),
-#    neutrons = cms.PSet(
-#        luminosity = cms.double(0.1),
-#        eventOccupancy = cms.vdouble(0.000709, 0.000782, 0.000162, 0.000162, 0.00238, 
-#            0.000141, 0.00101, 0.000126, 0.000129),
-#        startTime = cms.double(-400.0),
-#        reader = cms.string('ROOT'),
-#        input = cms.FileInPath('SimMuon/CSCDigitizer/data/CSCNeutronHits.root'),
-#        endTime = cms.double(200.0)
-#    ),
+
     wires = cms.PSet(
         signalStopTime = cms.double(300.0),
         # again, from http://indico.cern.ch/getFile.py/access?contribId=5&resId=0&materialId=slides&confId=111101
@@ -68,14 +70,18 @@ simMuonCSCDigis = cms.EDProducer("CSCDigiProducer",
         tailShaping = cms.int32(2),
         doNoise = cms.bool(True)
     ),
-   
-    mixLabel = cms.string("mix"),
-    InputCollection = cms.string("g4SimHitsMuonCSCHits"),
 
-    stripConditions = cms.string('Database'),
-    GeometryType = cms.string('idealForDigi'),                            
-    digitizeBadChambers = cms.bool(False),
-    layersNeeded = cms.uint32(3)
+    doNeutrons = cms.bool(False)
+#    neutrons = cms.PSet(
+#        luminosity = cms.double(0.1),
+#        eventOccupancy = cms.vdouble(0.000709, 0.000782, 0.000162, 0.000162, 0.00238,
+#            0.000141, 0.00101, 0.000126, 0.000129),
+#        startTime = cms.double(-400.0),
+#        reader = cms.string('ROOT'),
+#        input = cms.FileInPath('SimMuon/CSCDigitizer/data/CSCNeutronHits.root'),
+#        endTime = cms.double(200.0)
+#    ),
+
 )
 
 

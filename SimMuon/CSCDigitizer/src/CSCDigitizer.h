@@ -25,6 +25,8 @@
 #include "DataFormats/Common/interface/DetSetVector.h"
 #include "SimDataFormats/TrackerDigiSimLink/interface/StripDigiSimLink.h"
 
+#include <map>
+
 class CSCDriftSim;
 class CSCWireHitSim;
 class CSCStripHitSim;
@@ -39,24 +41,19 @@ class CSCDigitizer : public boost::noncopyable
 public:
   typedef edm::DetSetVector<StripDigiSimLink> DigiSimLinks;
 
-  /// configurable parameters
   explicit CSCDigitizer(const edm::ParameterSet & p);
   
   ~CSCDigitizer();
 
-  /**  digitize
-   */
-  void doAction(MixCollection<PSimHit> & simHits,
+  void digitize(std::map<int, edm::PSimHitContainer>& hitMap,
                 CSCWireDigiCollection & wireDigis,
                 CSCStripDigiCollection & stripDigis,
                 CSCComparatorDigiCollection & comparators,
                 DigiSimLinks & wireDigiSimLinks,
                 DigiSimLinks & stripDigiSimLinks);
 
-  /// sets geometry
   void setGeometry(const CSCGeometry * geom) {theCSCGeometry = geom;}
 
-  /// sets the magnetic field
   void setMagneticField(const MagneticField * field);
 
   void setStripConditions(CSCStripConditions * cond);

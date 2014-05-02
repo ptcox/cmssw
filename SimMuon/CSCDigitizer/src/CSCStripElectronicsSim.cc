@@ -432,7 +432,7 @@ void CSCStripElectronicsSim::createDigi(int channel, const CSCAnalogSignal & sig
 
   result.push_back(newDigi);
   addLinks(channelIndex(channel));
-  LogTrace("CSCStripElectronicsSim") << newDigi;
+  LogTrace("CSCStripElectronicsSim|CSCDumpNewDigi") << "CSC strip digi for " << theLayer->id() << " created\n" << newDigi;
 }
 
 
